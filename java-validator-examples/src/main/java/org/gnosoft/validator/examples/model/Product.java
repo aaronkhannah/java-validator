@@ -1,6 +1,7 @@
 package org.gnosoft.validator.examples.model;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Objects;
 
 public class Product extends Entity {
@@ -66,5 +67,95 @@ public class Product extends Entity {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), name, description, dimensions, manufacturerSuggestedRetailPrice, listPrice);
+  }
+
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder {
+    private Long id;
+    private String name;
+    private String createdBy;
+    private String description;
+    private Instant createdDate;
+    private Dimensions dimensions;
+    private String updatedBy;
+    private BigDecimal manufacturerSuggestedRetailPrice;
+    private Instant updatedDate;
+    private BigDecimal listPrice;
+
+    private Builder() {
+    }
+
+    public static Builder aProduct() {
+      return new Builder();
+    }
+
+    public Builder id(Long id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder createdBy(String createdBy) {
+      this.createdBy = createdBy;
+      return this;
+    }
+
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    public Builder createdDate(Instant createdDate) {
+      this.createdDate = createdDate;
+      return this;
+    }
+
+    public Builder dimensions(Dimensions dimensions) {
+      this.dimensions = dimensions;
+      return this;
+    }
+
+    public Builder updatedBy(String updatedBy) {
+      this.updatedBy = updatedBy;
+      return this;
+    }
+
+    public Builder manufacturerSuggestedRetailPrice(BigDecimal manufacturerSuggestedRetailPrice) {
+      this.manufacturerSuggestedRetailPrice = manufacturerSuggestedRetailPrice;
+      return this;
+    }
+
+    public Builder updatedDate(Instant updatedDate) {
+      this.updatedDate = updatedDate;
+      return this;
+    }
+
+    public Builder listPrice(BigDecimal listPrice) {
+      this.listPrice = listPrice;
+      return this;
+    }
+
+    public Product build() {
+      Product product = new Product();
+      product.setId(id);
+      product.setName(name);
+      product.setCreatedBy(createdBy);
+      product.setDescription(description);
+      product.setCreatedDate(createdDate);
+      product.setDimensions(dimensions);
+      product.setUpdatedBy(updatedBy);
+      product.setManufacturerSuggestedRetailPrice(manufacturerSuggestedRetailPrice);
+      product.setUpdatedDate(updatedDate);
+      product.setListPrice(listPrice);
+      return product;
+    }
   }
 }

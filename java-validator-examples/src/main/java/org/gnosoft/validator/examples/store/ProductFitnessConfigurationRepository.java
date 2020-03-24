@@ -16,8 +16,8 @@ public class ProductFitnessConfigurationRepository {
     configuration.setLengthMax(new BigDecimal("100"));
     configuration.setLengthMin(new BigDecimal("1"));
 
-    configuration.setNameLengthMax(1);
-    configuration.setNameLengthMin(127);
+    configuration.setNameLengthMin(1);
+    configuration.setNameLengthMax(127);
 
     configuration.setWidthMax(new BigDecimal("100"));
     configuration.setWidthMin(new BigDecimal("1"));

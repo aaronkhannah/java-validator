@@ -46,4 +46,45 @@ public class Dimensions {
   public int hashCode() {
     return Objects.hash(length, width, height);
   }
+
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder {
+    private BigDecimal length;
+    private BigDecimal width;
+    private BigDecimal height;
+
+    private Builder() {
+    }
+
+    public static Builder aDimensions() {
+      return new Builder();
+    }
+
+    public Builder length(BigDecimal length) {
+      this.length = length;
+      return this;
+    }
+
+    public Builder width(BigDecimal width) {
+      this.width = width;
+      return this;
+    }
+
+    public Builder height(BigDecimal height) {
+      this.height = height;
+      return this;
+    }
+
+    public Dimensions build() {
+      Dimensions dimensions = new Dimensions();
+      dimensions.setLength(length);
+      dimensions.setWidth(width);
+      dimensions.setHeight(height);
+      return dimensions;
+    }
+  }
 }
