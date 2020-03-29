@@ -6,7 +6,7 @@ import java.util.Map;
 import static java.lang.String.join;
 import static java.lang.System.out;
 
-public class OnSiteReportService {
+public class SiteReadyReportService {
   public void generateReport(Map<Long, Collection<String>> productValidationResults) {
     productValidationResults.forEach((key, value) -> {
       if (value.isEmpty()) {
