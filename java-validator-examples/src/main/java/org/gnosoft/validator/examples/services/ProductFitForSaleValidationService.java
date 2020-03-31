@@ -33,63 +33,39 @@ public class ProductFitForSaleValidationService {
     this.productFitnessConfigurationRepository = productFitnessConfigurationRepository;
 
     this.validator = ValidatorBuilder.<Product, ProductValidationContext>builder()
-      .add(checkForMaximumLength())
-      .add(checkForMinimumLength())
-      .add(checkForMaximumWidth())
-      .add(checkforMinimumWidth())
-      .add(checkForMaximumHeight())
-      .add(checkForMinimumHeight())
+      .add(checkForLengthLimit())
+      .add(checkForWidthLimit())
+      .add(checkForHeightLimit())
       .add(checkForValidDescription())
       .add(checkForValidName())
       .add(checkForListLessThanMsrp())
       .buildAsynchronous();
   }
 
-  private Constraint<Product, ProductValidationContext> checkForMaximumLength() {
-    return ConstraintBuilder.violation("label.product.exceeds.maximum.length")
+  private Constraint<Product, ProductValidationContext> checkForLengthLimit() {
+    return ConstraintBuilder.violation("label.product.exceeds.length.limit")
       .forConstraint((product, context) ->
         product.getDimensions() != null
         && product.getDimensions().getLength() != null
-        && product.getDimensions().getLength().compareTo(context.productFitnessConfiguration.getLengthMax()) <= 0);
-  }
-
-  private Constraint<Product, ProductValidationContext> checkForMinimumLength() {
-    return ConstraintBuilder.violation("label.product.exceeds.minimum.length")
-      .forConstraint((product, context) ->
-        product.getDimensions() != null
-        && product.getDimensions().getLength() != null
+        && product.getDimensions().getLength().compareTo(context.productFitnessConfiguration.getLengthMax()) <= 0
         && product.getDimensions().getLength().compareTo(context.productFitnessConfiguration.getLengthMin()) >= 0);
   }
 
-  private Constraint<Product, ProductValidationContext> checkForMaximumWidth() {
-    return ConstraintBuilder.violation("label.product.exceeds.maximum.width")
+  private Constraint<Product, ProductValidationContext> checkForWidthLimit() {
+    return ConstraintBuilder.violation("label.product.exceeds.width.limit")
       .forConstraint((product, context) ->
         product.getDimensions() != null
         && product.getDimensions().getWidth() != null
-        && product.getDimensions().getWidth().compareTo(context.productFitnessConfiguration.getWidthMax()) <= 0);
-  }
-
-  private Constraint<Product, ProductValidationContext> checkforMinimumWidth() {
-    return ConstraintBuilder.violation("label.product.exceeds.minimum.width")
-      .forConstraint((product, context) ->
-        product.getDimensions() != null
-        && product.getDimensions().getWidth() != null
+        && product.getDimensions().getWidth().compareTo(context.productFitnessConfiguration.getWidthMax()) <= 0
         && product.getDimensions().getWidth().compareTo(context.productFitnessConfiguration.getWidthMin()) >= 0);
   }
 
-  private Constraint<Product, ProductValidationContext> checkForMaximumHeight() {
-    return ConstraintBuilder.violation("label.product.exceeds.maximum.height")
+  private Constraint<Product, ProductValidationContext> checkForHeightLimit() {
+    return ConstraintBuilder.violation("label.product.exceeds.height.limit")
       .forConstraint((product, context) ->
         product.getDimensions() != null
         && product.getDimensions().getHeight() != null
-        && product.getDimensions().getHeight().compareTo(context.productFitnessConfiguration.getHeightMax()) <= 0);
-  }
-
-  private Constraint<Product, ProductValidationContext> checkForMinimumHeight() {
-    return ConstraintBuilder.violation("label.product.exceeds.minimum.height")
-      .forConstraint((product, context) ->
-        product.getDimensions() != null
-        && product.getDimensions().getHeight() != null
+        && product.getDimensions().getHeight().compareTo(context.productFitnessConfiguration.getHeightMax()) <= 0
         && product.getDimensions().getHeight().compareTo(context.productFitnessConfiguration.getHeightMin()) >= 0);
   }
 

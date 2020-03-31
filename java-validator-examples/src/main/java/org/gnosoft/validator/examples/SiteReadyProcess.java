@@ -2,8 +2,8 @@ package org.gnosoft.validator.examples;
 
 import org.gnosoft.validator.examples.model.Entity;
 import org.gnosoft.validator.examples.model.Product;
-import org.gnosoft.validator.examples.services.SiteReadyReportService;
 import org.gnosoft.validator.examples.services.ProductFitForSaleValidationService;
+import org.gnosoft.validator.examples.services.SiteReadyReportService;
 import org.gnosoft.validator.examples.services.SiteReadyService;
 import org.gnosoft.validator.examples.services.TranslationService;
 import org.gnosoft.validator.examples.store.ProductFitnessConfigurationRepository;
@@ -38,6 +38,22 @@ public class SiteReadyProcess implements Runnable {
     productRepository = new ProductRepository();
     siteReadyReportService = new SiteReadyReportService();
     siteReadyService = new SiteReadyService();
+  }
+
+  SiteReadyProcess(
+    TranslationService translationService,
+    ProductFitnessConfigurationRepository productFitnessConfigurationRepository,
+    ProductFitForSaleValidationService productFitForSaleValidationService,
+    ProductRepository productRepository,
+    SiteReadyReportService siteReadyReportService,
+    SiteReadyService siteReadyService
+  ) {
+    this.translationService = translationService;
+    this.productFitnessConfigurationRepository = productFitnessConfigurationRepository;
+    this.productFitForSaleValidationService = productFitForSaleValidationService;
+    this.productRepository = productRepository;
+    this.siteReadyReportService = siteReadyReportService;
+    this.siteReadyService = siteReadyService;
   }
 
   @Override
