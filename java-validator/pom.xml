@@ -14,6 +14,28 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <name>java-validator</name>
+  <description>A simple library for facilitating declarative Java object validation.</description>
+  <inceptionYear>2020</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Aaron Hannah</name>
+      <email>dev.aaron.hannah@gmail.com</email>
+      <roles>
+        <role>lead</role>
+        <role>developer</role>
+        <role>tester</role>
+      </roles>
+    </developer>
+  </developers>
+
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
