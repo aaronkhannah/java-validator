@@ -8,7 +8,7 @@ A small Java library to facilitate declarative validation of Java object state.
 ```java
 // Build a SynchronousValidator with a String subject and a String context.
 SynchronousValidator<String, String> validator = ValidatorBuilder.<String, String>builder()
-  .add(requireNotNull("subject.cannot.be.null"))
+  .add(Constraints.requireNotNull("subject.cannot.be.null"))
   .add(Constraints.violation("subject.cannot.be.blank").forConstraint((subject, context) -> !subject.isBlank()))
   .buildSynchronous();
 
