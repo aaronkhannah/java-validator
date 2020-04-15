@@ -19,8 +19,8 @@ package org.gnosoft.validator.examples.services;
 import org.gnosoft.validator.examples.model.Dimensions;
 import org.gnosoft.validator.examples.model.Product;
 import org.gnosoft.validator.examples.store.ProductFitnessConfigurationRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -46,7 +46,7 @@ public class ProductFitForSaleValidationServiceTest {
 
   private ProductFitForSaleValidationService unitUnderTest;
 
-  @Before
+  @BeforeEach
   public void before() {
     MockitoAnnotations.initMocks(this);
 

@@ -16,13 +16,13 @@
 
 package org.gnosoft.validator;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.shouldHaveThrown;
 
 public class ConstraintsTest {
-  @Test(expected = ValidationException.class)
+  @Test
   public void requireNotNull_NullSubject() {
     String message = "a.constraint.violation.message";
 
@@ -30,9 +30,7 @@ public class ConstraintsTest {
 
     assertThat(constraint).isNotNull();
 
-    constraint.verify(null, null);
-
-    shouldHaveThrown(ValidationException.class);
+    Assertions.assertThrows(ValidationException.class, () -> constraint.verify(null, null));
   }
 
   @Test
