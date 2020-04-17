@@ -12,17 +12,17 @@ SynchronousValidator<String, String> validator = ValidatorBuilder.<String, Strin
   .add(Constraints.violation("subject.cannot.be.blank").forConstraint((subject, context) -> !subject.isBlank()))
   .buildSynchronous();
 
-Violations result = validator.validate("non null subject");
+Violations violations = validator.validate("non null subject");
 
 // Should produce nothing.
-for (Violation violation : result) {
+for (Violation violation : violations) {
   System.out.println(violation);
 }
 
 result = validator.validate("");
 
 // Should produce "subject.cannot.be.blank".
-for (Violation violation : result) {
+for (Violation violation : violations) {
   System.out.println(violation);
 }
 ```
